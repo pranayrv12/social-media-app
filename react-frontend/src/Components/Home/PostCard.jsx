@@ -1,23 +1,23 @@
 import React from 'react'
-import { useState } from 'react'
-import ViewsModal from './ViewsModal'
-import ReplyModal from './ReplyModal'
 import { PostDate } from './PostDate'
 import { PostTime } from './PostTime'
+import ReplyModal from './ReplyModal'
+import ViewsModal from './ViewsModal'
 import image3 from '../Images/image3.png'
+import { Fragment, useState } from 'react'
 import InfoIcon from '@mui/icons-material/Info'
 import RepeatIcon from '@mui/icons-material/Repeat'
 import { useDispatch, useSelector } from 'react-redux'
 import BarChartIcon from '@mui/icons-material/BarChart'
-import FavoriteIcon from '@mui/icons-material/Favorite'
 import BookmarkIcon from '@mui/icons-material/Bookmark'
+import FavoriteIcon from '@mui/icons-material/Favorite'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 import FileUploadIcon from '@mui/icons-material/FileUpload'
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome'
 import SnackbarComponent from '../Snackbar/SnackbarComponent'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import { useParams, useLocation, useNavigate } from 'react-router-dom'
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline'
 import { Menu, Avatar, Divider, MenuItem, Typography, IconButton } from '@mui/material'
@@ -105,7 +105,7 @@ export default function PostCard({ post, isReply, isPostDetails }) {
     }
 
     return (
-        <React.Fragment>
+        <Fragment>
             <div
                 onMouseEnter={() => !isPostDetails && setIsHovered(true)}
                 onMouseLeave={() => !isPostDetails && setIsHovered(false)}
@@ -491,6 +491,6 @@ export default function PostCard({ post, isReply, isPostDetails }) {
             <section>
                 <SnackbarComponent open={openSnackBar} severity={'success'} handleClose={handleSnackBar} message={snackbarMessage}></SnackbarComponent>
             </section>
-        </React.Fragment>
+        </Fragment>
     )
 }

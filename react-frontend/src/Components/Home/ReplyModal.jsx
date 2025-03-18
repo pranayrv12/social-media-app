@@ -2,15 +2,15 @@ import React from 'react'
 import * as Yup from 'yup'
 import { PostDate } from './PostDate'
 import { createPortal } from 'react-dom'
-import { useRef, useState } from 'react'
 import image3 from '../Images/image3.png'
 import EmojiPicker from 'emoji-picker-react'
 import { useNavigate } from 'react-router-dom'
 import ClearIcon from '@mui/icons-material/Clear'
 import CloseIcon from '@mui/icons-material/Close'
 import ImageIcon from '@mui/icons-material/Image'
-import { createReply } from '../../Store/Post/Action'
+import { useRef, Fragment, useState } from 'react'
 import { CloudImages } from '../../Utils/CloudImages'
+import { createReply } from '../../Store/Post/Action'
 import { useDispatch, useSelector } from 'react-redux'
 import { Form, Field, Formik, ErrorMessage } from 'formik'
 import BackdropComponent from '../Backdrop/BackdropComponent'
@@ -147,7 +147,7 @@ export default function ReplyModal({ open, handleClose, postData }) {
     }
 
     return (
-        <div>
+        <Fragment>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -470,6 +470,6 @@ export default function ReplyModal({ open, handleClose, postData }) {
             <section>
                 <SnackbarComponent open={openSnackBar} severity={'error'} handleClose={handleSnackBar} message={snackbarMessage}></SnackbarComponent>
             </section>
-        </div>
+        </Fragment>
     )
 }

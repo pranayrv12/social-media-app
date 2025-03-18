@@ -3,7 +3,7 @@ export const CloudImages = async (pics, fileType) => {
 		const data = new FormData()
 		data.append('file', pics)
 		data.append('cloud_name', 'dhtzeoynn')
-		data.append('upload_preset', 'Social Media Application')
+		data.append('upload_preset', 'Social Media App')
 
 		const result = await fetch(
 			`https://api.cloudinary.com/v1_1/dhtzeoynn/${fileType}/upload`,

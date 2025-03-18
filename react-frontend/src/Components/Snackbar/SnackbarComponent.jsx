@@ -1,9 +1,10 @@
 import React from 'react'
+import { Fragment } from 'react'
 import { Alert, Snackbar } from '@mui/material'
 
 export default function SnackbarComponent({ open, message, severity, handleClose }) {
     return (
-        <div>
+        <Fragment>
             <Snackbar open={open} onClose={handleClose} autoHideDuration={5000} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
                 <Alert
                     variant='standard'
@@ -21,6 +22,6 @@ export default function SnackbarComponent({ open, message, severity, handleClose
                     {message}
                 </Alert>
             </Snackbar>
-        </div>
+        </Fragment>
     )
 }

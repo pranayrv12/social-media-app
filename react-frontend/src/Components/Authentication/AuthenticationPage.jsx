@@ -10,9 +10,9 @@ import { Grid, Button, Divider, Typography } from '@mui/material'
 import { signInUserWithGoogle } from '../../Store/Authentication/Action'
 
 export default function AuthenticationPage() {
-    const navigate = useNavigate()
     const dispatch = useDispatch()
     const location = useLocation()
+    const navigate = useNavigate()
 
     const { auth } = useSelector(store => store)
 

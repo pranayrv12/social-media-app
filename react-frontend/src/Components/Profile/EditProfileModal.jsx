@@ -1,8 +1,8 @@
 import React from 'react'
 import * as Yup from 'yup'
-import { useState } from 'react'
 import { BirthDate } from './BirthDate'
 import image5 from '../Images/image5.jpg'
+import { Fragment, useState } from 'react'
 import CloseIcon from '@mui/icons-material/Close'
 import { CloudImages } from '../../Utils/CloudImages'
 import { useDispatch, useSelector } from 'react-redux'
@@ -105,7 +105,7 @@ export default function EditProfileModal({ open, handleClose }) {
     }
 
     return (
-        <div>
+        <Fragment>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -590,6 +590,6 @@ export default function EditProfileModal({ open, handleClose }) {
             <section>
                 <SnackbarComponent open={openSnackBar} severity={'error'} handleClose={handleSnackBar} message={'Invalid Image File Type Selected!'}></SnackbarComponent>
             </section>
-        </div>
+        </Fragment>
     )
 }

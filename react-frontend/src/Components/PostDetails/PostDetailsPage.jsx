@@ -2,18 +2,18 @@ import React from 'react'
 import * as Yup from 'yup'
 import PostCard from '../Home/PostCard'
 import EmojiPicker from 'emoji-picker-react'
-import ImageIcon from '@mui/icons-material/Image'
 import ClearIcon from '@mui/icons-material/Clear'
-import { useRef, useState, useEffect } from 'react'
-import { createReply } from '../../Store/Post/Action'
+import ImageIcon from '@mui/icons-material/Image'
 import { CloudImages } from '../../Utils/CloudImages'
+import { createReply } from '../../Store/Post/Action'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate, useParams } from 'react-router-dom'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import { useNavigate, useParams } from 'react-router-dom'
 import { Form, Field, Formik, ErrorMessage } from 'formik'
 import { retrievePostById } from '../../Store/Post/Action'
 import BackdropComponent from '../Backdrop/BackdropComponent'
 import SnackbarComponent from '../Snackbar/SnackbarComponent'
+import { useRef, Fragment, useState, useEffect } from 'react'
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline'
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt'
 import { Box, Avatar, Button, TextField, Typography, IconButton } from '@mui/material'
@@ -122,7 +122,7 @@ export default function PostDetailsPage() {
     }
 
     return (
-        <React.Fragment>
+        <Fragment>
             <section
                 style={{
                     top: 0,
@@ -376,6 +376,6 @@ export default function PostDetailsPage() {
             <section>
                 <SnackbarComponent open={openSnackBar} severity={'error'} handleClose={handleSnackBar} message={snackbarMessage}></SnackbarComponent>
             </section>
-        </React.Fragment>
+        </Fragment>
     )
 }

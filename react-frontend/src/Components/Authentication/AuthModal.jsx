@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react'
-import SignUpForm from './SignUpForm'
 import SignInForm from './SignInForm'
+import SignUpForm from './SignUpForm'
 import { useSelector } from 'react-redux'
 import XIcon from '@mui/icons-material/X'
 import CloseIcon from '@mui/icons-material/Close'

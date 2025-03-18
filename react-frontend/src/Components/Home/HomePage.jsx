@@ -3,14 +3,14 @@ import * as Yup from 'yup'
 import PostCard from './PostCard'
 import EmojiPicker from 'emoji-picker-react'
 import { useNavigate } from 'react-router-dom'
-import ImageIcon from '@mui/icons-material/Image'
 import ClearIcon from '@mui/icons-material/Clear'
-import { useRef, useState, useEffect } from 'react'
+import ImageIcon from '@mui/icons-material/Image'
 import { CloudImages } from '../../Utils/CloudImages'
 import { useDispatch, useSelector } from 'react-redux'
 import { Form, Field, Formik, ErrorMessage } from 'formik'
 import BackdropComponent from '../Backdrop/BackdropComponent'
 import SnackbarComponent from '../Snackbar/SnackbarComponent'
+import { useRef, Fragment, useState, useEffect } from 'react'
 import { createPost, retrieveAllPosts } from '../../Store/Post/Action'
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline'
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt'
@@ -113,7 +113,7 @@ export default function HomePage() {
     }
 
     return (
-        <React.Fragment>
+        <Fragment>
             <section
                 style={{
                     top: 0,
@@ -352,6 +352,6 @@ export default function HomePage() {
             <section>
                 <SnackbarComponent open={openSnackBar} severity={'error'} handleClose={handleSnackBar} message={snackbarMessage}></SnackbarComponent>
             </section>
-        </React.Fragment>
+        </Fragment>
     )
 }

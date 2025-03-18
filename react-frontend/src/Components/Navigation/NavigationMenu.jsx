@@ -4,8 +4,8 @@ import EmailIcon from '@mui/icons-material/Email'
 import PersonIcon from '@mui/icons-material/Person'
 import SearchIcon from '@mui/icons-material/Search'
 import PendingIcon from '@mui/icons-material/Pending'
-import PeopleAltIcon from '@mui/icons-material/PeopleAlt'
 import BookmarksIcon from '@mui/icons-material/Bookmarks'
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt'
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone'
 
 export const navigationMenu = [

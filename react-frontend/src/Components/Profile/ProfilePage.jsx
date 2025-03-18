@@ -1,17 +1,17 @@
 import React from 'react'
-import PostCard from '../Home/PostCard'
 import { BirthDate } from './BirthDate'
-import { JoinedDate } from './JoinedDate'
+import PostCard from '../Home/PostCard'
 import image3 from '../Images/image3.png'
 import image5 from '../Images/image5.jpg'
-import { useState, useEffect } from 'react'
+import { JoinedDate } from './JoinedDate'
 import CakeIcon from '@mui/icons-material/Cake'
 import LinkIcon from '@mui/icons-material/Link'
 import EditProfileModal from './EditProfileModal'
+import { Fragment, useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { TabList, TabPanel, TabContext } from '@mui/lab'
-import { useParams, useNavigate } from 'react-router-dom'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import { useParams, useNavigate } from 'react-router-dom'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 import BackdropComponent from '../Backdrop/BackdropComponent'
 import SnackbarComponent from '../Snackbar/SnackbarComponent'
@@ -89,7 +89,7 @@ export default function ProfilePage() {
     }
 
     return (
-        <div>
+        <Fragment>
             <section
                 style={{
                     top: 0,
@@ -560,6 +560,6 @@ export default function ProfilePage() {
             <section>
                 <SnackbarComponent open={openSnackBar} severity={'success'} handleClose={handleSnackBar} message={'User Profile Successfully Updated!'}></SnackbarComponent>
             </section>
-        </div>
+        </Fragment>
     )
 }

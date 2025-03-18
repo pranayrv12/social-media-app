@@ -1,8 +1,8 @@
 import React from 'react'
-import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { Fragment, useState } from 'react'
 import DoneIcon from '@mui/icons-material/Done'
 import CloseIcon from '@mui/icons-material/Close'
-import { useDispatch, useSelector } from 'react-redux'
 import { generatePaymentLink } from '../../Store/Payment/Action'
 import { Box, Modal, Button, IconButton, Typography, ButtonGroup } from '@mui/material'
 
@@ -33,7 +33,7 @@ export default function PremiumModal({ open, handleClose }) {
     }
 
     return (
-        <div>
+        <Fragment>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -274,6 +274,6 @@ export default function PremiumModal({ open, handleClose }) {
                     </section>
                 </Box>
             </Modal>
-        </div>
+        </Fragment>
     )
 }

@@ -1,12 +1,12 @@
 import React from 'react'
 import * as Yup from 'yup'
-import { useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import EmojiPicker from 'emoji-picker-react'
 import { useNavigate } from 'react-router-dom'
 import ClearIcon from '@mui/icons-material/Clear'
 import CloseIcon from '@mui/icons-material/Close'
 import ImageIcon from '@mui/icons-material/Image'
+import { useRef, Fragment, useState } from 'react'
 import { createPost } from '../../Store/Post/Action'
 import { CloudImages } from '../../Utils/CloudImages'
 import { useDispatch, useSelector } from 'react-redux'
@@ -147,7 +147,7 @@ export default function PostModal({ open, handleClose }) {
     }
 
     return (
-        <div>
+        <Fragment>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -420,6 +420,6 @@ export default function PostModal({ open, handleClose }) {
             <section>
                 <SnackbarComponent open={openSnackBar} severity={'error'} handleClose={handleSnackBar} message={snackbarMessage}></SnackbarComponent>
             </section>
-        </div>
+        </Fragment>
     )
 }

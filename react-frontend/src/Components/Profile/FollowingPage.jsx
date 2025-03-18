@@ -1,6 +1,6 @@
 import React from 'react'
-import { useEffect } from 'react'
 import image3 from '../Images/image3.png'
+import { Fragment, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import { useParams, useNavigate } from 'react-router-dom'
@@ -32,7 +32,7 @@ export default function FollowingPage() {
     const following = auth.findUser.following || []
 
     return (
-        <React.Fragment>
+        <Fragment>
             <section
                 style={{
                     top: 0,
@@ -186,6 +186,6 @@ export default function FollowingPage() {
                     </Typography>
                 </div>
             )}
-        </React.Fragment>
+        </Fragment>
     )
 }

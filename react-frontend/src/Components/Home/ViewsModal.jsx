@@ -1,4 +1,5 @@
 import React from 'react'
+import { Fragment } from 'react'
 import CloseIcon from '@mui/icons-material/Close'
 import { Box, Modal, Button, IconButton, Typography } from '@mui/material'
 
@@ -17,7 +18,7 @@ const style = {
 
 export default function ViewsModal({ open, handleClose }) {
     return (
-        <div>
+        <Fragment>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -70,6 +71,6 @@ export default function ViewsModal({ open, handleClose }) {
                     </div>
                 </Box>
             </Modal>
-        </div>
+        </Fragment>
     )
 }

@@ -1,9 +1,9 @@
 import React from 'react'
-import { useState } from 'react'
 import image3 from '../Images/image3.png'
+import { Fragment, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import PersonIcon from '@mui/icons-material/Person'
 import { Avatar, Typography } from '@mui/material'
+import PersonIcon from '@mui/icons-material/Person'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 
 export default function NotificationCard({ notification }) {
@@ -18,7 +18,7 @@ export default function NotificationCard({ notification }) {
     }
 
     return (
-        <React.Fragment>
+        <Fragment>
             <div
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
@@ -79,6 +79,6 @@ export default function NotificationCard({ notification }) {
                     </div>
                 </div>
             </div>
-        </React.Fragment>
+        </Fragment>
     )
 }

@@ -1,8 +1,8 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import NotificationCard from './NotificationCard'
 import DoneAllIcon from '@mui/icons-material/DoneAll'
+import { Fragment, useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import SettingsIcon from '@mui/icons-material/Settings'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
@@ -42,7 +42,7 @@ export default function NotificationsPage() {
     }
 
     return (
-        <div>
+        <Fragment>
             <section
                 style={{
                     top: 0,
@@ -169,6 +169,6 @@ export default function NotificationsPage() {
             <section>
                 <BackdropComponent open={auth.loading}></BackdropComponent>
             </section>
-        </div>
+        </Fragment>
     )
 }

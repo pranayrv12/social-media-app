@@ -1,6 +1,6 @@
 import React from 'react'
-import { useEffect } from 'react'
 import PostCard from '../Home/PostCard'
+import { Fragment, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Typography, IconButton } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
@@ -22,7 +22,7 @@ export default function BookmarksPage() {
     const bookmarkedPosts = post.bookmarkedPosts || []
 
     return (
-        <React.Fragment>
+        <Fragment>
             <section
                 style={{
                     top: 0,
@@ -75,6 +75,6 @@ export default function BookmarksPage() {
             <section>
                 <BackdropComponent open={post.loading}></BackdropComponent>
             </section>
-        </React.Fragment>
+        </Fragment>
     )
 }
