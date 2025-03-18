@@ -40,6 +40,17 @@ public class PostController {
 	@Autowired
 	private NotificationDetailsService notificationDetailsService;
 
+	@PutMapping("/post/{postId}/highlight")
+	public ResponseEntity<PostDataTransfer> highlightPost(@PathVariable Long postId,
+			@RequestHeader("Authorization") String jwt) throws UserException, PostException {
+
+		User user = userService.retrieveUserByJwt(jwt);
+		Post post = postDetailsService.highlightPost(postId, user.getId());
+		PostDataTransfer postDataTransfer = PostDataTransferMapper.toPostDataTransfer(post, user);
+
+		return new ResponseEntity<PostDataTransfer>(postDataTransfer, HttpStatus.ACCEPTED);
+	}
+
 	@GetMapping("/post/{postId}")
 	public ResponseEntity<PostDataTransfer> retrievePostById(@PathVariable Long postId,
 			@RequestHeader("Authorization") String jwt) throws UserException, PostException {
@@ -51,18 +62,7 @@ public class PostController {
 
 		PostDataTransfer postDataTransfer = PostDataTransferMapper.toPostDataTransfer(post, user);
 
-		return new ResponseEntity<>(postDataTransfer, HttpStatus.OK);
-	}
-
-	@PutMapping("/post/{postId}/highlight")
-	public ResponseEntity<PostDataTransfer> highlightPost(@PathVariable Long postId,
-			@RequestHeader("Authorization") String jwt) throws UserException, PostException {
-
-		User user = userService.retrieveUserByJwt(jwt);
-		Post post = postDetailsService.highlightPost(postId, user.getId());
-		PostDataTransfer postDataTransfer = PostDataTransferMapper.toPostDataTransfer(post, user);
-
-		return new ResponseEntity<>(postDataTransfer, HttpStatus.OK);
+		return new ResponseEntity<PostDataTransfer>(postDataTransfer, HttpStatus.ACCEPTED);
 	}
 
 	@PostMapping("/post/create")
@@ -73,7 +73,7 @@ public class PostController {
 		Post newPost = postDetailsService.createPost(post, user);
 		PostDataTransfer postDataTransfer = PostDataTransferMapper.toPostDataTransfer(newPost, user);
 
-		return new ResponseEntity<>(postDataTransfer, HttpStatus.CREATED);
+		return new ResponseEntity<PostDataTransfer>(postDataTransfer, HttpStatus.CREATED);
 	}
 
 	@PostMapping("/post/reply")
@@ -84,7 +84,7 @@ public class PostController {
 		Post newReply = postDetailsService.createReply(request, user);
 		PostDataTransfer postDataTransfer = PostDataTransferMapper.toPostDataTransfer(newReply, user);
 
-		return new ResponseEntity<>(postDataTransfer, HttpStatus.CREATED);
+		return new ResponseEntity<PostDataTransfer>(postDataTransfer, HttpStatus.CREATED);
 	}
 
 	@PutMapping("/post/{postId}/repost")
@@ -95,7 +95,7 @@ public class PostController {
 		Post newRepost = postDetailsService.repostPost(postId, user);
 		PostDataTransfer postDataTransfer = PostDataTransferMapper.toPostDataTransfer(newRepost, user);
 
-		return new ResponseEntity<>(postDataTransfer, HttpStatus.OK);
+		return new ResponseEntity<PostDataTransfer>(postDataTransfer, HttpStatus.ACCEPTED);
 	}
 
 	@GetMapping("/posts/user/{userId}")
@@ -107,7 +107,7 @@ public class PostController {
 		List<Post> posts = postDetailsService.retrieveAllUserPosts(user2);
 		List<PostDataTransfer> postDataTransfers = PostDataTransferMapper.toPostDataTransfers(posts, user1);
 
-		return new ResponseEntity<>(postDataTransfers, HttpStatus.OK);
+		return new ResponseEntity<List<PostDataTransfer>>(postDataTransfers, HttpStatus.ACCEPTED);
 	}
 
 	@GetMapping("/posts/replies/user/{userId}")
@@ -119,7 +119,7 @@ public class PostController {
 		List<Post> posts = postDetailsService.retrieveAllUserReplies(user2);
 		List<PostDataTransfer> postDataTransfers = PostDataTransferMapper.toPostDataTransfers(posts, user1);
 
-		return new ResponseEntity<>(postDataTransfers, HttpStatus.OK);
+		return new ResponseEntity<List<PostDataTransfer>>(postDataTransfers, HttpStatus.ACCEPTED);
 	}
 
 	@GetMapping("/posts/user/{userId}/likes")
@@ -131,7 +131,7 @@ public class PostController {
 		List<Post> posts = postDetailsService.retrievePostsLikedByUser(user2);
 		List<PostDataTransfer> postDataTransfers = PostDataTransferMapper.toPostDataTransfers(posts, user1);
 
-		return new ResponseEntity<>(postDataTransfers, HttpStatus.OK);
+		return new ResponseEntity<List<PostDataTransfer>>(postDataTransfers, HttpStatus.ACCEPTED);
 	}
 
 	@GetMapping("/posts/user/{userId}/bookmarks")
@@ -143,7 +143,7 @@ public class PostController {
 		List<Post> posts = postDetailsService.retrievePostsBookmarkedByUser(user2);
 		List<PostDataTransfer> postDataTransfers = PostDataTransferMapper.toPostDataTransfers(posts, user1);
 
-		return new ResponseEntity<>(postDataTransfers, HttpStatus.OK);
+		return new ResponseEntity<List<PostDataTransfer>>(postDataTransfers, HttpStatus.ACCEPTED);
 	}
 
 	@GetMapping("/posts")
@@ -154,7 +154,7 @@ public class PostController {
 		List<Post> posts = postDetailsService.retrieveAllPosts();
 		List<PostDataTransfer> postDataTransfers = PostDataTransferMapper.toPostDataTransfers(posts, user);
 
-		return new ResponseEntity<>(postDataTransfers, HttpStatus.OK);
+		return new ResponseEntity<List<PostDataTransfer>>(postDataTransfers, HttpStatus.ACCEPTED);
 	}
 
 	@DeleteMapping("/post/{postId}/delete")
@@ -167,9 +167,9 @@ public class PostController {
 		postDetailsService.deletePostById(postId, user.getId());
 
 		ApiResponse newResponse = new ApiResponse();
-		newResponse.setMessage("Post deleted successfully");
+		newResponse.setMessage("Post Deleted Successfully.");
 		newResponse.setStatus(true);
 
-		return new ResponseEntity<>(newResponse, HttpStatus.OK);
+		return new ResponseEntity<ApiResponse>(newResponse, HttpStatus.ACCEPTED);
 	}
 }

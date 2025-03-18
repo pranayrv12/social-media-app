@@ -28,6 +28,16 @@ public class NotificationController {
 	@Autowired
 	private NotificationDetailsService notificationDetailsService;
 
+	@DeleteMapping("/notifications/delete")
+	public ResponseEntity<String> deleteUserNotifications(@RequestHeader("Authorization") String jwt)
+			throws UserException {
+
+		User user = userService.retrieveUserByJwt(jwt);
+		notificationDetailsService.deleteUserNotifications(user);
+
+		return new ResponseEntity<String>("Notifications Deleted Successfully.", HttpStatus.ACCEPTED);
+	}
+
 	@PutMapping("/notifications/markAllAsRead")
 	public ResponseEntity<String> markAllUserNotificationsAsRead(@RequestHeader("Authorization") String jwt)
 			throws UserException {
@@ -35,7 +45,7 @@ public class NotificationController {
 		User user = userService.retrieveUserByJwt(jwt);
 		notificationDetailsService.markAllUserNotificationsAsRead(user);
 
-		return new ResponseEntity<>("All user notifications have been marked as read.", HttpStatus.OK);
+		return new ResponseEntity<String>("Notifications Marked As Read Successfully.", HttpStatus.ACCEPTED);
 	}
 
 	@GetMapping("/notifications")
@@ -45,16 +55,6 @@ public class NotificationController {
 		User user = userService.retrieveUserByJwt(jwt);
 		List<Notification> notifications = notificationDetailsService.retrieveUserNotifications(user);
 
-		return new ResponseEntity<>(notifications, HttpStatus.OK);
-	}
-
-	@DeleteMapping("/notifications/delete")
-	public ResponseEntity<String> deleteUserNotifications(@RequestHeader("Authorization") String jwt)
-			throws UserException {
-
-		User user = userService.retrieveUserByJwt(jwt);
-		notificationDetailsService.deleteUserNotifications(user);
-
-		return new ResponseEntity<>("All user notifications have been deleted successfully.", HttpStatus.ACCEPTED);
+		return new ResponseEntity<List<Notification>>(notifications, HttpStatus.ACCEPTED);
 	}
 }

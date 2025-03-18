@@ -39,7 +39,7 @@ public class UserController {
 		UserDataTransfer userDataTransfer = UserDataTransferMapper.toUserDataTransfer(u);
 		userDataTransfer.setValidatedUser(true);
 
-		return new ResponseEntity<>(userDataTransfer, HttpStatus.ACCEPTED);
+		return new ResponseEntity<UserDataTransfer>(userDataTransfer, HttpStatus.ACCEPTED);
 	}
 
 	@GetMapping("/user/{userId}")
@@ -65,7 +65,7 @@ public class UserController {
 		UserDataTransfer userDataTransfer = UserDataTransferMapper.toUserDataTransfer(toBeFollowed);
 		userDataTransfer.setFollowed(UserInfo.isFollowedByUser(u, toBeFollowed));
 
-		return new ResponseEntity<>(userDataTransfer, HttpStatus.ACCEPTED);
+		return new ResponseEntity<UserDataTransfer>(userDataTransfer, HttpStatus.ACCEPTED);
 	}
 
 	@GetMapping("/users/search")
@@ -75,7 +75,7 @@ public class UserController {
 		List<User> users = userService.searchUsersByNameOrEmail(query);
 		List<UserDataTransfer> userDataTransfers = UserDataTransferMapper.toUserDataTransfers(users);
 
-		return new ResponseEntity<>(userDataTransfers, HttpStatus.ACCEPTED);
+		return new ResponseEntity<List<UserDataTransfer>>(userDataTransfers, HttpStatus.ACCEPTED);
 	}
 
 	@GetMapping("/users/{userId}/excluding-followed")
@@ -85,7 +85,7 @@ public class UserController {
 		List<User> users = userService.retrieveUsersExcludingFollowed(userId);
 		List<UserDataTransfer> userDataTransfers = UserDataTransferMapper.toUserDataTransfers(users);
 
-		return new ResponseEntity<>(userDataTransfers, HttpStatus.ACCEPTED);
+		return new ResponseEntity<List<UserDataTransfer>>(userDataTransfers, HttpStatus.ACCEPTED);
 	}
 
 	@GetMapping("/user/profile")

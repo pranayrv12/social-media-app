@@ -43,10 +43,10 @@ public class PaymentController {
 		User user = userService.retrieveUserByJwt(jwt);
 
 		if (user.getPremium().isPremium()) {
-			return new ResponseEntity<String>("You are already subscribed to Premium.", HttpStatus.OK);
+			return new ResponseEntity<String>("You are already subscribed to Premium.", HttpStatus.ACCEPTED);
 		}
 		userService.activatePremium(user, planType);
 
-		return new ResponseEntity<String>("You are now subscribed to Premium.", HttpStatus.OK);
+		return new ResponseEntity<String>("You are now subscribed to Premium.", HttpStatus.ACCEPTED);
 	}
 }

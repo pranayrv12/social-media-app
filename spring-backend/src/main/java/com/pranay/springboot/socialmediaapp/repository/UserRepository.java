@@ -16,5 +16,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	public List<User> searchUsersByNameOrEmail(@Param("query") String query);
 
 	@Query("SELECT u FROM User u WHERE u.id <> :userId AND u NOT IN (SELECT f FROM User u2 JOIN u2.following f WHERE u2.id = :userId)")
-	List<User> retrieveUsersExcludingFollowed(@Param("userId") Long userId);
+	public List<User> retrieveUsersExcludingFollowed(@Param("userId") Long userId);
 }

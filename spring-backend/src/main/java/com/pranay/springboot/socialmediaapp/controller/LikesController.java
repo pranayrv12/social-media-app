@@ -41,7 +41,7 @@ public class LikesController {
 		Likes likes = likesDetailsService.likePost(postId, user);
 		LikesDataTransfer likesDataTransfer = LikesDataTransferMapper.toLikesDataTransfer(likes, user);
 
-		return new ResponseEntity<LikesDataTransfer>(likesDataTransfer, HttpStatus.OK);
+		return new ResponseEntity<LikesDataTransfer>(likesDataTransfer, HttpStatus.ACCEPTED);
 	}
 
 	@DeleteMapping("/{postId}/unlike")
@@ -52,7 +52,7 @@ public class LikesController {
 		Likes likes = likesDetailsService.unlikePost(postId, user);
 		LikesDataTransfer likesDataTransfer = LikesDataTransferMapper.toLikesDataTransfer(likes, user);
 
-		return new ResponseEntity<>(likesDataTransfer, HttpStatus.OK);
+		return new ResponseEntity<LikesDataTransfer>(likesDataTransfer, HttpStatus.ACCEPTED);
 	}
 
 	@GetMapping("/post/{postId}/likes")
@@ -63,6 +63,6 @@ public class LikesController {
 		List<Likes> likes = likesDetailsService.retrieveAllLikes(postId);
 		List<LikesDataTransfer> likesDataTransfers = LikesDataTransferMapper.toLikesDataTransfers(likes, user);
 
-		return new ResponseEntity<>(likesDataTransfers, HttpStatus.CREATED);
+		return new ResponseEntity<List<LikesDataTransfer>>(likesDataTransfers, HttpStatus.ACCEPTED);
 	}
 }

@@ -164,7 +164,7 @@ public class AuthController {
 		authResponse.setStatus(true);
 		authResponse.setJwt(token);
 
-		return new ResponseEntity<>(authResponse, HttpStatus.CREATED);
+		return new ResponseEntity<AuthResponse>(authResponse, HttpStatus.CREATED);
 	}
 
 	private User validateGoogleIdToken(SignInWithGoogleRequest request) throws IOException, GeneralSecurityException {

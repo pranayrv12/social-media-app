@@ -42,7 +42,7 @@ public class BookmarksController {
 		List<BookmarksDataTransfer> bookmarksDataTransfers = BookmarksDataTransferMapper
 				.toBookmarksDataTransfers(bookmarks, user);
 
-		return new ResponseEntity<>(bookmarksDataTransfers, HttpStatus.CREATED);
+		return new ResponseEntity<List<BookmarksDataTransfer>>(bookmarksDataTransfers, HttpStatus.ACCEPTED);
 	}
 
 	@PostMapping("/{postId}/bookmark")
@@ -54,7 +54,7 @@ public class BookmarksController {
 		BookmarksDataTransfer bookmarksDataTransfer = BookmarksDataTransferMapper.toBookmarksDataTransfer(bookmarks,
 				user);
 
-		return new ResponseEntity<BookmarksDataTransfer>(bookmarksDataTransfer, HttpStatus.OK);
+		return new ResponseEntity<BookmarksDataTransfer>(bookmarksDataTransfer, HttpStatus.ACCEPTED);
 	}
 
 	@DeleteMapping("/{postId}/unbookmark")
@@ -66,6 +66,6 @@ public class BookmarksController {
 		BookmarksDataTransfer bookmarksDataTransfer = BookmarksDataTransferMapper.toBookmarksDataTransfer(bookmarks,
 				user);
 
-		return new ResponseEntity<>(bookmarksDataTransfer, HttpStatus.OK);
+		return new ResponseEntity<BookmarksDataTransfer>(bookmarksDataTransfer, HttpStatus.ACCEPTED);
 	}
 }
